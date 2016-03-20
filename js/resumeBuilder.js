@@ -6,7 +6,7 @@ var bio = {
     'email': 'pao.perez@test.com',
     'github': 'pao-perez',
     'twitter': 'no-twitter',
-    'location': 'blah blah city'
+    'location': 'Pasig City'
   },
   'biopic': 'images/fry.jpg',
   'welcomeMessage': 'Hi There!',
@@ -49,21 +49,21 @@ var work = {
     {
       'employer': 'ABC',
       'title': 'Java Developer',
-      'location': 'Blah blah City',
+      'location': 'Pasig City',
       'dates': '11-2015 - Present',
       'description': 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
     },
     {
       'employer': 'DEF',
       'title': 'Google Apps Developer',
-      'location': 'Blah blah City',
+      'location': 'Makati City',
       'dates': '06-2015 - 11-2015',
       'description': 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
     },
     {
       'employer': 'XYZ',
       'title': 'Jr. Software Engineer',
-      'location': 'Blah blah City',
+      'location': 'Quezon City',
       'dates': '03-2014 - 04-2015',
       'description': 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
     }
@@ -142,7 +142,7 @@ var education = {
   'schools': [
     {
       'name': 'ABC',
-      'location': 'Abc avenue',
+      'location': 'Makati City',
       'degree': 'BS',
       'majors': [
         'CS',
@@ -152,7 +152,7 @@ var education = {
     },
     {
       'name': 'DEF',
-      'location': 'Def avenue',
+      'location': 'Makati City',
       'degree': 'BA',
       'majors': [
         'MA'
@@ -182,14 +182,12 @@ var education = {
     var formattedLocation;
     var formattedDescription;
 
+    $('#education').append(HTMLschoolStart);
     education.schools.forEach(function(val) {
-      $('#education').append(HTMLschoolStart);
-
       formattedSchool = HTMLschoolName.replace('%data%', val.name);
       formattedDegree = HTMLschoolDegree.replace('%data%', val.degree);
       formattedDates = HTMLschoolDates.replace('%data%', val.dates);
       formattedLocation = HTMLschoolLocation.replace('%data%', val.location);
-
       $('.education-entry:last').append(formattedSchool + formattedDegree + formattedDates + formattedLocation);
 
       var formattedMajors;
@@ -199,17 +197,19 @@ var education = {
       }
     });
 
-    //TODO $('#education').append(HTMLonlineClasses);
-
+    $('#education').append(HTMLonlineClasses);
+    $('#education').append(HTMLonlineCoursesStart);
     education.onlineCourses.forEach(function(val) {
       formattedTitle = HTMLonlineTitle.replace('%data%', val.title);
       formattedSchool = HTMLonlineSchool.replace('%data%', val.school);
       formattedDate = HTMLonlineDates.replace('%data%', val.date);
       formattedURL = HTMLonlineURL.replace('%data%', val.url);
 
-      $('.education-entry:last').append(formattedTitle + formattedSchool + formattedDate + formattedURL);
+      $('.online-entry:last').append(formattedTitle + formattedSchool + formattedDate + formattedURL);
     });
   }
 }
 
 education.display();
+
+$("#mapDiv").append(googleMap);
